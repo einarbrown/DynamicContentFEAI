@@ -1,0 +1,133 @@
+<!-- <!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #input-form {
+                padding: 15px;
+                background-color: #931C22;
+            }
+            #input-form input {
+                padding: 10px;
+                font-size: 20px;
+                width: 400px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="input-form">
+            <input type="text" name="environment" placeholder="skriv miljö"  />
+        </div>
+    </body>
+</html> -->
+<!-- <!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                background-color: #F0E4D7; /* Mjuk bakgrundsfärg */
+            }
+
+            #input-form {
+                padding: 20px;
+                background-color: #FFD9C0; /* Ljusare, mjukare bakgrundsfärg */
+                border-radius: 20px; /* Rundade hörn */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Lägg till skugga för djup */
+                font-family: 'Arial', sans-serif; /* Välj ett gulligt typsnitt */
+            }
+
+            #input-form input {
+                padding: 15px;
+                font-size: 18px;
+                /*width: 100%;*/ /* Anpassa bredden till föräldern */
+                /*margin-top: 8px;*/ /* Lägg till lite utrymme ovanför */
+                border: none; /* Ta bort standardkant */
+                border-radius: 10px; /* Rundade hörn på input */
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtil skugga för input */
+            }
+
+            #input-form input:focus {
+                outline: none; /* Ta bort fokusomriss */
+                box-shadow: 0 0 0 2px #FFAB73; /* Lägg till en färgad omriss vid fokus */
+            }
+        </style>
+    </head>
+    <body>
+        <div id="input-form">
+            <input type="text" name="environment" placeholder="Skriv miljön..."  />
+        </div>
+    </body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+            height: 100vh;
+            background-color: #A8DADC; /* Trevlig bakgrundsfärg */
+            /*background-image: url('background-image-url.jpg');*/ /* Lägg till en bakgrundsbild om du vill */
+            /*background-size: cover;*/ /* Se till att bakgrundsbilden täcker hela skärmen */
+            color: #1D3557; /* Färg på texten */
+            font-family: 'Arial', sans-serif;
+            /* text-align: center;  */ /* Centrerar texten */
+            padding: 0 20px;
+            
+            /* Lägger till lite padding för att inte texten ska vara direkt vid kanten */
+        }
+
+        #input-form {
+            background-color: #F1FAEE; 
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 100%;
+            max-width: 500px; /* Maxbredd för att hålla formuläret hanterbart på stora skärmar */
+            text-align: center; 
+        }
+
+        #input-form input, #input-form button {
+            padding: 15px;
+            margin-top: 10px;
+            width: calc(100% - 30px); /* Justera bredden för att räkna med padding */
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 18px;
+        }
+
+        #input-form button {
+            background-color: #E63946; /* Lägg till en knapp med lite färg */
+            color: white;
+            font-weight: bold;
+            cursor: pointer; /* Visar en pekare för att indikera att det är klickbart */
+        }
+
+        #input-form button:hover {
+            background-color: #F4A261; /* Ändrar färg vid hover för feedback */
+        }
+
+        h1 {
+            margin-bottom: 0.5em; /* Lite utrymme under rubriken */
+        }
+
+        p {
+            margin-top: 0; /* Tar bort standardmarginal ovanför första paragrafen */
+        }
+    </style>
+</head>
+<body>
+    <div id="input-form">
+        <h1>Välkommen till ett dynamiskt äventyr!</h1>
+        <p>Detta spel skapar unika världar baserat på den miljö du anger. Skriv in en miljö (t.ex. "skog", "öken", "stad") i textfältet nedan och se spelet komma till liv med dynamiskt genererad grafik.</p>
+        <input type="text" name="environment" placeholder="Skriv miljö här..." />
+        <button type="button">Starta Spelet</button>
+    </div>
+</body>
+</html>
