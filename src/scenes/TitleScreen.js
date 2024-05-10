@@ -6,6 +6,19 @@ export default class TitleScreen extends Phaser.Scene
      preload() {
         this.load.html('input','input.html');
 
+        if (this.textures.exists('background')) {
+            this.cache.image.remove('background');
+        }
+        if (this.textures.exists('enemy')) {
+            this.cache.image.remove('enemy');
+        }
+        if (this.textures.exists('hero')) {
+            this.cache.image.remove('hero');
+        }
+        if (this.textures.exists('victim')) {
+            this.cache.image.remove('victim');
+        }
+        
     }
 
     create() {
