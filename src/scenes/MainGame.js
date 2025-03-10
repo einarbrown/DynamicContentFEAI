@@ -38,7 +38,12 @@ export default class MainGame extends Phaser.Scene
         
         //Background
         this.physics.world.setBounds(0,0,this.game.config.width,this.game.config.height-50,false,false,true,true)
-        this.add.image(this.game.config.width * 0.5, this.game.config.height * 0.5,'background')
+        const bg = this.add.image(this.game.config.width * 0.5, this.game.config.height * 0.5,'background')
+        const scaleX = this.game.config.width / bg.width;
+        const scaleY = this.game.config.height / bg.height;
+        const scale = Math.max(scaleX, scaleY); // Använd den största skalfaktorn för att täcka hela ytan
+        bg.setScale(scale);
+        bg.setOrigin(0.5, 0.5);
 
         //poäng
         this.scoreText = this.add.text(1400, 100, 'Score: 0', { fontFamily: '"Press Start 2P"',fontSize: '32px', fill: '#ffffff' }); // Visa poängen på skärmen
@@ -49,7 +54,7 @@ export default class MainGame extends Phaser.Scene
 
         //Setup enemy
         this.enemySprite = this.physics.add.sprite(1400, 1100, 'enemy');
-        this.setupSprite(this.enemySprite, 0.3, 0.2, 0, 1000)
+        this.setupSprite(this.enemySprite, 0.2, 0.2, 0, 1000)
 
         // Setup Victims
         this.victims = this.physics.add.group();
@@ -181,7 +186,7 @@ export default class MainGame extends Phaser.Scene
     {
         sprite.setScale(scale);
         sprite.setCollideWorldBounds(true)
-        sprite.body.setSize(1024 -350, 1024 - 350);
+        sprite.body.setSize(1024 -400, 1024 - 300);
         sprite.setBounce(bounce)
         sprite.setDrag(drag, 0); // Sätt inbromsning (x-axel, y-axel)
         sprite.setMaxVelocity(300, 1000); // Maxhastighet (x-axel, y-axel)

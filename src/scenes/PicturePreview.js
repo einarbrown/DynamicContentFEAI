@@ -42,7 +42,7 @@ export default class PicturePreview extends Phaser.Scene
         this.lerpSpeed = 0.005; // Hastighet på interpoleringen
 
         //this.updateProgressBar(this.gameData.loaded)
-        this.loadingtext = this.add.text(300, 300, `Bakgrund laddas. `, 
+        this.loadingtext = this.add.text(300, 300, `Background is loading. `, 
         {   fontFamily: '"Press Start 2P"',
             fontSize: '30px', fill: '#ffffff' ,
             align: 'center'
@@ -57,7 +57,7 @@ export default class PicturePreview extends Phaser.Scene
             this.gameData.imagesPreviewed = 0
             this.gameData.loaded = 0.1
             this.gameData.newLoad = 0.3
-            this.loadImage(`Hjälten laddas. ` + this.gameContext.Hero, 'hero', 'background', this.gameContext.Hero, 480)
+            this.loadImage(`Hero is loading. ` + this.gameContext.Hero, 'hero', 'background', this.gameContext.Hero, 480, 0.24)
         });
         this.load.start();
 
@@ -109,7 +109,7 @@ export default class PicturePreview extends Phaser.Scene
         emptyPic.fillRect(x, y, width, height);
     }
 
-    loadImage(loadingText, imageToLoad, imageToShow, description, pictureWidth)
+    loadImage(loadingText, imageToLoad, imageToShow, description, pictureWidth, scale)
     {
         this.picturePosition += pictureWidth + 20
 
@@ -124,7 +124,7 @@ export default class PicturePreview extends Phaser.Scene
                 (this.cameras.main.height - this.loadingtext.height) / 2
             );
 
-        this.add.image(this.picturePosition, 302,imageToShow).setScale(0.2);
+        this.add.image(this.picturePosition, 302,imageToShow).setScale(scale);
         this.load.image(imageToLoad, this.GetSpriteUrl(description));
 
         this.load.once('complete', () => {
@@ -135,11 +135,11 @@ export default class PicturePreview extends Phaser.Scene
 
             if(this.gameData.imagesPreviewed == 1)
             {
-                this.loadImage(`Fienden laddas. ` + this.gameContext.Enemy, 'enemy', 'hero', this.gameContext.Enemy, 280)
+                this.loadImage(`Enemy is loading. ` + this.gameContext.Enemy, 'enemy', 'hero', this.gameContext.Enemy, 280, 0.2)
             }
             else if(this.gameData.imagesPreviewed == 2)
             {
-                this.loadImage(`Offer laddas. ` + this.gameContext.Victim, 'victim', 'enemy',this.gameContext.Victim, 205)
+                this.loadImage(`Victim is loading. ` + this.gameContext.Victim, 'victim', 'enemy',this.gameContext.Victim, 205, 0.2)
             }
             else if(this.gameData.imagesPreviewed == 3)
             {
@@ -157,12 +157,12 @@ export default class PicturePreview extends Phaser.Scene
     }
 
     GetSpriteUrl(description) {
-        //return 'http://localhost:3000/getSprite?description=' + encodeURIComponent(description);
+        //return 'http://localhost:3002/getSprite?description=' + encodeURIComponent(description);
         return 'https://dynamicdefencegameaibe.azurewebsites.net/getSprite?description=' + encodeURIComponent(description);
     }
 
     getBackgroundUrl(environment) {
-        //return 'http://localhost:3000/getBackground?environment=' + encodeURIComponent(environment);
+        //return 'http://localhost:3002/getBackground?environment=' + encodeURIComponent(environment);
         return 'https://dynamicdefencegameaibe.azurewebsites.net/getBackground?environment=' + encodeURIComponent(environment);
     }
     

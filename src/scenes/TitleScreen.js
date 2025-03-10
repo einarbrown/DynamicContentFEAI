@@ -7,16 +7,16 @@ export default class TitleScreen extends Phaser.Scene
         this.load.html('input','input.html');
 
         if (this.textures.exists('background')) {
-            this.cache.image.remove('background');
+            this.textures.remove('background');
         }
         if (this.textures.exists('enemy')) {
-            this.cache.image.remove('enemy');
+            this.textures.remove('enemy');
         }
         if (this.textures.exists('hero')) {
-            this.cache.image.remove('hero');
+            this.textures.remove('hero');
         }
         if (this.textures.exists('victim')) {
-            this.cache.image.remove('victim');
+            this.textures.remove('victim');
         }
         
     }
@@ -37,10 +37,37 @@ export default class TitleScreen extends Phaser.Scene
 
     }
 
+
+    // update()
+    // {
+    //     pingRemoveBG();
+    // }
+
+    pingRemoveBG()
+    {
+        fetch('https://removebgnow.azurewebsites.net/api/http_trigger?code='+ removeBgCode)
+        .then(response => response.json())
+        .then(gameContext => {
+        
+            let gameData = {
+                gameContext: gameContext,
+                loaded: 0,
+                newLoad:0.1,
+                imagesPreviewed: -1
+            };
+            this.scene.start('picturePreview', gameData)
+
+
+        })
+        .catch(error => {
+            console.error('Fel vid hämtning av game context:', error);
+        });
+    }
+
     StartGame(environmentInput) {
         let environment = environmentInput.getChildByName("environment");
         if (environment.value != "") {
-            this.add.text(550, 600, `Skapar miljö.`, {  fontFamily: '"Press Start 2P"',fontSize: '39px', fill: '#ffffff' });
+            this.add.text(550, 600, `Creating environment.`, {  fontFamily: '"Press Start 2P"',fontSize: '39px', fill: '#ffffff' });
             console.log("skapar miljö: " + environment.value)
             this.fetchGameContext(environment.value);
 
@@ -50,7 +77,7 @@ export default class TitleScreen extends Phaser.Scene
 
     fetchGameContext(environment) {
 
-        //fetch('http://localhost:3000/getGameContext?environment='+ environment)
+        //fetch('http://localhost:3002/getGameContext?environment='+ environment)
         fetch('https://dynamicdefencegameaibe.azurewebsites.net/getGameContext?environment='+ environment)
         .then(response => response.json())
         .then(gameContext => {

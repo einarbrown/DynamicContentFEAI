@@ -9,7 +9,7 @@ export default class Intro extends Phaser.Scene
     }
 
     create() {
-        const fullText = this.introText + "\n\n Tryck enter för att starta.";
+        const fullText = this.introText + "\n\n Press Enter to begin.";
         let currentText = '';
         let displayText = this.add.text(0, 0, '', {
             fontFamily: '"Press Start 2P"',
